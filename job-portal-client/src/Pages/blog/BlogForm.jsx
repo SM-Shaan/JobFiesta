@@ -35,9 +35,6 @@ const BlogForm = () => {
             </header>
             <div className="p-4">
                 <Blogform1 addPost={addPost} />
-                {/* {posts.map((post, index) => (
-                    <BlogPost key={index} title={post.title} content={post.content} date={post.date} imageUrl={post.imageUrl} />
-                ))} */}
             </div>
             <Outlet />
         </div>

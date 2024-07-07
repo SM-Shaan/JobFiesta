@@ -8,19 +8,19 @@ const BlogData = () => {
     const { getAccessTokenSilently } = useAuth0();
     const [recentBlogs, setRecentBlogs] = useState([]);
     const [filteredBlogs, setFilteredBlogs] = useState([]);
-    const [filterWriter, setFilterWriter] = useState(''); // State for filtering by writer
-    const [filterTag, setFilterTag] = useState(''); // State for filtering by tag
+    const [filterWriter, setFilterWriter] = useState('');
+    const [filterTag, setFilterTag] = useState('');
 
     useEffect(() => {
         const fetchBlogData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/all-blogs'); // Replace with your API endpoint
+                const response = await fetch('http://localhost:3000/all-blogs');
                 const result = await response.json();
 
                 const sortedBlogs = result.sort((a, b) => new Date(b.postingDate) - new Date(a.postingDate));
 
                 setRecentBlogs(sortedBlogs);
-                setFilteredBlogs(sortedBlogs); // Initially set filtered blogs to all blogs
+                setFilteredBlogs(sortedBlogs);
             } catch (error) {
                 console.error('Error fetching blog data:', error);
             }
@@ -29,27 +29,22 @@ const BlogData = () => {
         fetchBlogData();
     }, [getAccessTokenSilently]);
 
-    // Function to handle filter change by writer
     const handleWriterFilterChange = (event) => {
         const value = event.target.value;
         setFilterWriter(value);
 
-        // Filter blogs based on writer
         const filtered = recentBlogs.filter(blog => blog.postedBy.toLowerCase().includes(value.toLowerCase()));
         setFilteredBlogs(filtered);
     };
 
-    // Function to handle filter change by tag
     const handleTagFilterChange = (event) => {
         const value = event.target.value;
         setFilterTag(value);
 
-        // Filter blogs based on tag
         const filtered = recentBlogs.filter(blog => blog.skills.some(skill => skill.label.toLowerCase().includes(value.toLowerCase())));
         setFilteredBlogs(filtered);
     };
 
-    // Function to count occurrences of each tag
     const countByTag = (blogs) => {
         const countMap = {};
         blogs.forEach(blog => {
@@ -60,7 +55,6 @@ const BlogData = () => {
         return countMap;
     };
 
-    // Function to calculate data for the PieChart based on posting date
     const countByPostingDate = (blogs) => {
         const countMap = {};
         blogs.forEach(blog => {
@@ -70,10 +64,8 @@ const BlogData = () => {
         return countMap;
     };
 
-    // Colors for PieChart segments
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF6384', '#36A2EB'];
 
-    // Render customized label for PieChart
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
         const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
         const x = cx + radius * Math.cos(-midAngle * Math.PI / 180);
@@ -86,18 +78,13 @@ const BlogData = () => {
         );
     };
 
-    // Data for PieChart based on tags
     const tagData = countByTag(filteredBlogs);
 
-    // Data for PieChart based on posting date
     const postingDateData = countByPostingDate(filteredBlogs);
 
     return (
         <div className='flex-row'>
             <div className='p-5'>
-
-
-                {/* Pie charts for Tags and Posting Date */}
                 <div className='flex justify-around'>
                     <div className="mb-8">
                         <p className="text-xl font-bold mb-4 ml-20">Tag Distribution</p>
@@ -141,7 +128,6 @@ const BlogData = () => {
                         </PieChart>
                     </div>
                 </div>
-                {/* Filter Controls */}
                 <div className='flex justify-around'>
                     <div className="mb-2">
                         <label className="mr-2">Filter by Writer:</label>
@@ -162,7 +148,6 @@ const BlogData = () => {
                         />
                     </div>
                 </div>
-                {/* Blog data table */}
                 <table className="min-w-full bg-white border shadow-lg rounded-lg overflow-hidden">
                     <thead>
                         <tr>

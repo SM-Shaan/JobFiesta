@@ -31,7 +31,6 @@ const events = [
         image: "/images/event2.jpeg",
         category: "job fair",
     },
-    // Add more events as needed
 ];
 
 const EventSlider = () => {

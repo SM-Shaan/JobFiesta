@@ -17,7 +17,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 const DashboardLayout = () => {
     const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
-    const namespace = 'https://myapp.example.com/'; // Use your actual namespace here
+    const namespace = 'https://myapp.example.com/';
     const userRoles = user?.[`${namespace}roles`] || [];
 
     const dashItems = [
@@ -52,7 +52,6 @@ const DashboardLayout = () => {
                                         (!roles || hasRole(roles)) && (
                                             <li key={path} className="text-base text-primary">
                                                 <NavLink to={path} className={({ isActive }) => (isActive ? "active" : "")}>
-                                                    {/* {title} */}
                                                 </NavLink>
                                             </li>
                                         )
@@ -87,8 +86,6 @@ const DashboardLayout = () => {
                         ) : (
                             <p> You don't access..</p>
                         )}
-                        {/* <li><Link to="PostData"><CiSignpostDuo1 />PostData</Link></li> */}
-                        {/* <li><Link to="/dashboard/logout"><IoIosLogOut />Logout</Link></li> */}
                     </ul>
                 </div>
             </div>

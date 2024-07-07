@@ -13,7 +13,6 @@ const Recent = () => {
             .then((res) => res.json())
             .then((data) => {
                 const companyies = data.filter((item) => item.salaryType === "Yearly");
-                // console.log(specials)
                 setCompany(companyies);
             });
     }, []);

@@ -1,8 +1,9 @@
 const express = require('express') ///
-const app = express() ///
+const app = express() /// 
 const cors = require('cors') ///
 const port = process.env.PORT || 3000; ///
 const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
 require('dotenv').config()
 
 // console.log('Auth0 Domain:', process.env.REACT_APP_AUTH0_DOMAIN);
@@ -14,40 +15,10 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST);
 
 // middleware
 app.use(express.json()) ///
+app.use(bodyParser.json());
 app.use(cors({
-  origin: ["http://localhost:3000"],
 })) ///
 app.use(cookieParser());
-
-// stripe code
-app.post('/create-payment-intent', async (req, res) => {
-  try {
-    const { price, description, customer } = req.body;
-    const amount = parseInt(price * 100, 10);
-
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount,
-      currency: "usd",
-      payment_method_types: ['card'],
-      description: description || "Purchase of subscription",
-      shipping: {
-        name: customer.name,
-        address: {
-          line1: customer.address.line1,
-          postal_code: customer.address.postal_code,
-          city: customer.address.city,
-          state: customer.address.state,
-          country: customer.address.country,
-        },
-      },
-    });
-
-    res.send({ clientSecret: paymentIntent.client_secret });
-  } catch (error) {
-    res.status(500).send({ error: error.message });
-  }
-}); ///
-
 
 //database
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
@@ -66,7 +37,6 @@ const client = new MongoClient(uri, {
 async function run() {
   
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
     // create db
@@ -75,6 +45,7 @@ async function run() {
     const blogsCollections = db.collection("demoBlogs");
     const eventsCollections = db.collection("demoEvents");
     const contentsCollections = db.collection("demoContents");
+    const paymentsCollections = db.collection("demoPayments");
     
     // post a job
     app.post("/post-job",async(req,res)=> {
@@ -91,6 +62,22 @@ async function run() {
             })
         }
     }) 
+    // post a payment
+    app.post("/post-payment",async(req,res)=> {
+        const body = req.body;
+        body.createAt = new Date();
+        // console.log(body);
+        const result = await paymentsCollections.insertOne(body);
+        if(result.insertedId){
+            return res.status(200).send(result);
+        }else{
+            return res.status(404).send({
+                message: "can not insert! try again later",
+                status: false
+            })
+        }
+    }) 
+
     // post a blog
     app.post("/post-blog",async(req,res)=> {
         const body = req.body;
@@ -148,6 +135,11 @@ async function run() {
         const jobs = await jobsCollections.find({}).toArray()
         res.send(jobs);
     })
+    //get all payments
+    app.get("/all-payments",async(req,res) => {
+        const payments = await paymentsCollections.find({}).toArray()
+        res.send(payments);
+    })
     //get all blogs
     app.get("/all-blogs",async(req,res) => {
         const blogs = await blogsCollections.find({}).toArray()
@@ -196,6 +188,11 @@ async function run() {
       const jobs = await jobsCollections.find({postedBy : req.params.email}).toArray();
       res.send(jobs)
     })
+    app.get("/myPayments/:userId", async(req,res)=> {
+      // console.log(req.params.email)
+      const payments = await paymentsCollections.find({postedBy : req.params.email}).toArray();
+      res.send(payments)
+    })
 
     //delete a job
     app.delete("/job/:id", async(req,res)=> {
@@ -224,8 +221,6 @@ async function run() {
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
-    // Ensures that the client will close when you finish/error
-    // await client.close();
   }
 }
 run().catch(console.dir);
@@ -236,37 +231,4 @@ app.get('/',(req,res)=>{
 
 app.listen(port, ()=> {
     console.log(`Example app listening on port ${port}`)
-}) ///
-
-
-// import dotenv from 'dotenv'
-// import express from 'express'
-// dotenv.config()
-
-// const app=express()
-
-// app.listen(process.env.PORT , ()=>{
-  
-// })
-// const express = require('express');
-// // const app = express();
-// const { auth } = require('express-oauth2-jwt-bearer');
-
-// // const port = process.env.PORT || 8080;
-
-// const jwtCheck = auth({
-//   audience: 'http://localhost:5173/post-job',
-//   issuerBaseURL: 'https://dev-vdgep7b8x0ps2c2m.us.auth0.com/',
-//   tokenSigningAlg: 'RS256'
-// });
-
-// // enforce on all endpoints
-// app.use(jwtCheck);
-
-// app.get('/authorized', function (req, res) {
-//     res.send('Secured Resource');
-// });
-
-// app.listen(port);
-
-// console.log('Running on port ', port);
+}) 

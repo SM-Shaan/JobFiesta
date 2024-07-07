@@ -2,7 +2,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import { FaBarsStaggered, FaXmark } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
-import Modal from "./Modal";
 
 const Navbar = ({ }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +9,7 @@ const Navbar = ({ }) => {
 
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
 
-  const namespace = 'https://myapp.example.com/'; // Use your actual namespace here
+  const namespace = 'https://myapp.example.com/';
   const userRoles = user?.[`${namespace}roles`] || [];
 
   const handleMenuToggler = () => {
@@ -38,7 +37,6 @@ const Navbar = ({ }) => {
     { path: "/events", title: "Events" },
     // { path: "/dashboard", title: "Admin Dashboard", roles: ["Admin"] },
   ];
-
 
   const hasRole = (roles) => roles?.some(role => userRoles.includes(role));
 
@@ -105,9 +103,7 @@ const Navbar = ({ }) => {
           {isAuthenticated ? (
             <>
               <li className="text-base text-white py-1">
-                {/* <img src={user.picture} alt={user.name} /> */}
                 <NavLink to="/dashmenu/dashboard" className="text-xs text-slate-500">{user.name}</NavLink>
-                {/* <p>Roles: {userRoles.join(', ')}</p> */}
               </li>
               <li className="text-base text-white py-1">
                 <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Log Out</button>

@@ -27,7 +27,6 @@ const EventData = () => {
         fetchEventData();
     }, [getAccessTokenSilently]);
 
-    // Function to calculate data for the PieChart based on posting date
     const countByPostingDate = (events) => {
         const countMap = {};
         events.forEach(event => {
@@ -37,10 +36,8 @@ const EventData = () => {
         return countMap;
     };
 
-    // Colors for PieChart segments
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF6384', '#36A2EB'];
 
-    // Render customized label for PieChart
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
         const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
         const x = cx + radius * Math.cos(-midAngle * Math.PI / 180);
@@ -53,18 +50,12 @@ const EventData = () => {
         );
     };
 
-
-    // Data for PieChart based on posting date
     const postingDateData = countByPostingDate(filteredEvents);
 
     return (
         <div className='flex-row'>
             <div className='p-5'>
-
-
-                {/* Pie charts for Tags and Posting Date */}
                 <div className='flex justify-around'>
-
                     <div className="mb-8">
                         <p className="text-xl font-bold mb-4 ml-10">Posting Date Distribution</p>
                         <PieChart width={300} height={300}>
@@ -86,7 +77,6 @@ const EventData = () => {
                         </PieChart>
                     </div>
                 </div>
-                {/* Event data table */}
                 <table className="min-w-full bg-white border shadow-lg rounded-lg overflow-hidden">
                     <thead>
                         <tr>

@@ -8,6 +8,7 @@ header{
   z-index: 10001 !important;
 }
 
+
 .section-container{
   @apply max-w-screen-2xl container mx-auto xl:px-24 px-4;
 }
@@ -19,6 +20,20 @@ header{
 .title{
   @apply text-4xl md:text-5xl font-bold my-2 md:leading-snug leading-snug
 }
+
+.checkout-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-details {
+  width: 40%;
+}
+
+#payment-form {
+  width: 55%;
+}
+
 
 .modal-action {
   display: flex;
@@ -50,12 +65,6 @@ header{
   border-radius: 9999px;
   padding: 0px;
 }
-/* .btn-circle:where(.btn-xs){
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: 9999px;
-  padding: 0px;
-} */
 
 .modal[open]{
   pointer-events: auto;
@@ -78,54 +87,6 @@ header{
   width: 100%;
 }
 
-/* //Towshin 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-
-
-/* //About */
 /* about */
 .about{
   display: flex;
@@ -638,7 +599,6 @@ li {
 /* Blog Banner  */
 .Blog__banner{
   background: #ffff;
-  /* margin-top: 2rem; */
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -826,24 +786,6 @@ li {
 }
 
 
-
-/* payment */
-/* #root {
-  display: flex;
-  align-items: center;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-  width: 100vw;
-} */
-
 form_home {
   width: 10vw;
   min-width: 500px;
@@ -958,41 +900,3 @@ form_home {
 .join-us-animation {
   animation: joinUsAnimation 1s infinite;
 }
-
-/* Blog Form  */
-
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */

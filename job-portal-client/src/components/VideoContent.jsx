@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { FaVideo } from 'react-icons/fa';
 
 const VideoNewsletter = () => {
-    // Define state variables
     const [videoList, setVideoList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 3;
 
-    // Mapping of video URLs to image URLs
     const videoImageMap = {
         "https://youtu.be/XEfeI-bRvRk?si=tz3OiUquOMxRhFhQ": "/images/frame1.png",
         "https://youtu.be/lBttUKNRHLQ?si=P70L5VS15QGcnxZh": "https://img.youtube.com/vi/lBttUKNRHLQ/sddefault.jpg",
@@ -16,33 +14,29 @@ const VideoNewsletter = () => {
         "https://youtu.be/njaM9zHCsSk?si=1xbjFu9D-irZ_T6B": "https://img.youtube.com/vi/njaM9zHCsSk/sddefault.jpg",
     };
 
-    // Fetch video content from server on component mount
     useEffect(() => {
         fetch("http://localhost:3000/all-contents")
             .then((res) => res.json())
             .then((data) => {
-                setVideoList(data);  // Update state with fetched data
-                setIsLoading(false); // Update loading state
+                setVideoList(data);
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.error("Error fetching video content:", error);
-                setIsLoading(false); // Handle error by updating loading state
+                setIsLoading(false);
             });
     }, []);
 
-    // Calculate current videos based on pagination
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentVideos = videoList.slice(indexOfFirstItem, indexOfLastItem);
 
-    // Function to handle next page click
     const nextPage = () => {
         if (indexOfLastItem < videoList.length) {
             setCurrentPage(currentPage + 1);
         }
     };
 
-    // Function to handle previous page click
     const prevPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
@@ -57,7 +51,7 @@ const VideoNewsletter = () => {
             {isLoading ? (
                 <p className="text-gray-600">Loading...</p>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 w-full px-2">
+                <div className="grid grid-cols-1 gap-3 w-full px-2">
                     {currentVideos.map((video) => (
                         <div
                             key={video.id}

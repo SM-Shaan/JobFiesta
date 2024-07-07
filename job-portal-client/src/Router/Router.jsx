@@ -40,12 +40,13 @@ import EventTable from "../Pages/dashboard/admin/EventTable";
 import EventData from "../Pages/dashboard/admin/EventData";
 import VideoContentForm from "../Pages/VideoContentForm";
 import AboutUs from "../Pages/AboutUs";
+import Success from "../Pages/PaymentCard/Success";
 
 const RoleBasedRoute = ({ children, allowedRoles }) => {
   const role = useUserRole();
 
   if (!role) {
-    return <p>Loading...</p>; // or a loading spinner
+    return <p>Loading...</p>;
   }
 
   if (!allowedRoles.includes(role)) {
@@ -63,8 +64,7 @@ const useUserRole = () => {
     const fetchUserRole = async () => {
       try {
         const token = await getAccessTokenSilently();
-        // Decode the token or fetch the user profile to get the role
-        const userRole = user['https://myapp.example.com/'][0]; // Custom claim in the token
+        const userRole = user['https://myapp.example.com/'][0];
         setRole(userRole);
       } catch (error) {
         console.error('Error fetching user role:', error);
@@ -77,58 +77,11 @@ const useUserRole = () => {
   return role;
 };
 
-
-// Define user types
 const USER_ROLES = {
   ADMIN: 'Admin',
   RECRUITER: 'Recruiter',
   APPLICANT: 'Applicant',
 };
-
-
-// // Mock current user type (replace with actual logic)
-// const CURRENT_USER_TYPE = USER_TYPES.PUBLIC;
-
-// // PublicElement component for public routes
-// const PublicElement = ({ children }) => (
-//   <>
-//     {children}
-//   </>
-// );
-
-// // UserElement component for protected routes
-// const UserElement = ({ children }) => {
-//   if (CURRENT_USER_TYPE === USER_TYPES.ADMIN_USER || CURRENT_USER_TYPE === USER_TYPES.NORMAL_USER) {
-//     return (
-//       <>
-//         {children}
-//       </>
-//     );
-//   } else {
-//     // Alert message for unauthorized access
-//     return (
-//       <>
-//         <p>You do not have access!</p>
-//       </>
-//     );
-//   }
-// };
-// const AdminElement = ({ children }) => {
-//   if (CURRENT_USER_TYPE === USER_TYPES.ADMIN_USER) {
-//     return (
-//       <>
-//         {children}
-//       </>
-//     );
-//   } else {
-//     // Alert message for unauthorized access
-//     return (
-//       <>
-//         <p>You do not have access!</p>
-//       </>
-//     );
-//   }
-// };
 
 const router = createBrowserRouter([
   {
@@ -155,6 +108,7 @@ const router = createBrowserRouter([
           { path: "my-job", element: <MyJobs /> },
         ]
       },
+      { path: "/success", element: <Success /> },
       { path: "blogform", element: <BlogForm /> },
       { path: "/post-blog", element: <Blogform1 /> },
       { path: "/about", element: <AboutUs /> },
@@ -178,7 +132,7 @@ const router = createBrowserRouter([
       { path: "/salary", element: <SalaryPage /> },
       { path: "/slider", element: <SliderServicePage /> },
       { path: "/contact", element: <ContactUs /> },
-      { path: "/payment", element: <Payment /> },
+      { path: "/post-payment", element: <Payment /> },
       { path: "/events", element: <JobFairDetails /> },
       { path: "/companylist", element: <CompanyList /> },
       // { path: "/eventd  etails", element: <EventDetails /> },

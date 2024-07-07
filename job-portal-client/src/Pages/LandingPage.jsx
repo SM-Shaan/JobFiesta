@@ -3,7 +3,6 @@ import React from 'react'
 import About from '../components/About'
 import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
-import Footer2 from '../components/Footer2'
 import HomeBanner from '../components/HomeBanner'
 import ServicesCard from '../components/ServicesCard'
 import { fadeIn } from "../variants"

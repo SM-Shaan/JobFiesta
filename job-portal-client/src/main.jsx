@@ -7,14 +7,6 @@ import './index.css';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-
-  //   <Auth0Provider isSignedIn={false}
-  //   domain="dev-vdgep7b8x0ps2c2m.us.auth0.com"
-  //   clientId="GuGnMTVuzE9y01zDEMH1fIHB29AqLbm6"
-  //   authorizationParams={{
-  //     redirect_uri: window.location.origin
-  //   }}
-  // >
   <Auth0Provider
     domain="dev-r7gyhhk1xc6innc8.us.auth0.com"
     clientId="vxsONLvZVj92WziCNulxXLOuDu03BEin"

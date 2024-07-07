@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 const About = () => {
     return (
         <motion.div
-
-
             initial={{ x: -1000 }}
             animate={{ x: [900, 0] }}
             transition={{

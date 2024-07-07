@@ -1,4 +1,3 @@
-// src/Newsletter.js
 import React, { useState } from 'react';
 import { FaEnvelopeOpenText } from 'react-icons/fa';
 

@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 
 const PostDetails = () => {
     const { id } = useParams();
-    const [job, setJob] = useState(null); // Initialize as null for better conditional rendering
+    const [job, setJob] = useState(null);
 
     useEffect(() => {
         fetch(`http://localhost:3000/all-blogs/${id}`)
@@ -27,7 +27,6 @@ const PostDetails = () => {
                 <h1 className="font-bold text-3xl mt-6 mb-4 text-blue-600">{job.blogTitle}</h1>
                 <p className="text-gray-600 mb-2"><strong>Posted on:</strong> {job.postingDate}</p>
                 <p className="text-gray-600 mb-4"><strong>Author:</strong> {job.postedBy}</p>
-                {/* <p className="font-bold text-gray-600 mb-2">Descriptions:</p> */}
                 <h2 className="text-blue-700 text-lg font-bold mb-2">Description:</h2>
                 {job.description && job.description.split('\n').map((paragraph, index) => (
                     <p key={index} className="text-gray-700 text-base mb-4">

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { FaBriefcase, FaRegHandshake, FaChartLine } from "react-icons/fa";
+import { TypeAnimation } from "react-type-animation";
 
 const HomeBanner = () => {
 
@@ -19,18 +19,30 @@ const HomeBanner = () => {
             className="section-container bg-gradient-to-r from-white to-gray"
         >
             <div className="py-10 flex flex-col md:flex-row justify-between items-center gap-8">
-                {/* Image */}
+
                 <motion.div className="md:w-1/2" whileHover={{ scale: 1.05 }}>
                     <img src="/images/run.jpg" alt="Job Application" className="rounded-lg shadow-lg bg-whitej" />
                 </motion.div>
 
-                {/* Texts */}
                 <motion.div
                     variants={variants} initial="initial" animate="animate" exit="exit"
                     className="md:w-1/2 space-y-7 px-4"
                 >
                     <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
-                        Get Your <span className="text-blue"> Dream Job </span>
+                        Get Your <TypeAnimation
+                            sequence={[
+                                'Career Guidelines',
+                                1000,
+                                ' Dream Job ',
+                                1000,
+                                ' Resume prepared',
+                                1000,
+                            ]}
+                            wrapper="span"
+                            cursor={true}
+                            repeat={Infinity}
+                            className="text-blue"
+                        />
                     </h2>
                     <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
                         Today!

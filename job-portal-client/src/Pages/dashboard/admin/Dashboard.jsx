@@ -1,7 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const data = [
     { name: 'Jan', users: 400, jobs: 240, applications: 2400 },
@@ -20,6 +19,8 @@ const Dashboard = () => {
     const [dataLength, setDataLength] = useState(0);
     const [blogdata, setBlogData] = useState([]);
     const [blogdataLength, setBlogDataLength] = useState(0);
+    const [paymentdata, setPaymentData] = useState([]);
+    const [paymentdataLength, setPaymentDataLength] = useState(0);
     const [recentJobs, setRecentJobs] = useState([]);
     const [recentBlogs, setRecentBlogs] = useState([]);
 
@@ -49,14 +50,12 @@ const Dashboard = () => {
 
         const fetchJobData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/all-jobs'); // Replace with your API endpoint
+                const response = await fetch('http://localhost:3000/all-jobs');
                 const result = await response.json();
 
-                // Sort jobs by date and get the 5 most recent ones
                 const sortedJobs = result.sort((a, b) => new Date(b.postingDate) - new Date(a.postingDate));
                 const recentJobs = sortedJobs.slice(0, 5);
 
-                // Update the state with the fetched data and the length
                 setData(result);
                 setDataLength(result.length);
                 setRecentJobs(recentJobs);
@@ -67,7 +66,7 @@ const Dashboard = () => {
 
         const fetchBlogData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/all-blogs'); // Replace with your API endpoint
+                const response = await fetch('http://localhost:3000/all-blogs');
                 const result = await response.json();
 
                 const sortedBlogs = result.sort((a, b) => new Date(b.postingDate) - new Date(a.postingDate));
@@ -81,8 +80,25 @@ const Dashboard = () => {
             }
         };
 
+        const fetchPaymentData = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/all-payments');
+                const result = await response.json();
+
+                const sortedPayments = result.sort((a, b) => new Date(b.postingDate) - new Date(a.postingDate));
+                const recPayments = sortedPayments.slice(0, 5);
+
+                setPaymentData(result);
+                setPaymentDataLength(result.length);
+                setRecentPayments(recentPayments);
+            } catch (error) {
+                console.error('Error fetching blog data:', error);
+            }
+        };
+
         fetchJobData();
         fetchBlogData();
+        fetchPaymentData();
         fetchUserCount();
     }, [getAccessTokenSilently]);
 
@@ -113,7 +129,7 @@ const Dashboard = () => {
                 </div>
                 <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-bold mb-2">Total Payments</h2>
-                    <p className="text-3xl">$15,000</p>
+                    <p className="text-3xl">{paymentdataLength}</p>
                 </div>
             </div>
 

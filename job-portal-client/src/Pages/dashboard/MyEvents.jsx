@@ -11,10 +11,8 @@ const MyEvents = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        // Convert additional images to an array if provided
         data.additionalImages = data.additionalImages ? data.additionalImages.split(',') : [];
 
-        // Convert speakers to an array of objects if provided
         if (data.speakers) {
             data.speakers = data.speakers.split(',').map(speaker => {
                 const parts = speaker.split(':');
@@ -26,15 +24,12 @@ const MyEvents = () => {
             data.speakers = [];
         }
 
-        // Convert benefits to an array if provided
         data.benefits = data.benefits ? data.benefits.split(',') : [];
 
-        // Set event type based on current date and posting date
         const currentDate = new Date();
         const postingDate = new Date(data.date);
         data.type = postingDate > currentDate ? 'upcoming' : 'past';
 
-        // Convert schedule data to an array of objects if provided
         if (data.schedule) {
             data.schedule = data.schedule.split(',').map(item => {
                 const parts = item.split(':');
@@ -45,8 +40,6 @@ const MyEvents = () => {
         } else {
             data.schedule = [];
         }
-
-        // Post the event data to your backend or API
         fetch("http://localhost:3000/MyEvents", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
@@ -58,7 +51,7 @@ const MyEvents = () => {
                 if (result.acknowledged === true) {
                     alert("Event Posted Successfully!!!");
                 }
-                reset(); // Reset the form after submission
+                reset();
             })
             .catch(error => console.error('Error posting event:', error));
     };

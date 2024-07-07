@@ -5,7 +5,6 @@ const Users = () => {
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-4">All Users</h1>
             <p>Here is a list of all users.</p>
-            {/* Add user list/table here */}
         </div>
     );
 }

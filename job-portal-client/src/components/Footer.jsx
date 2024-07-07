@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FiMail, FiPhone, FiTwitter, FiYoutube, FiFacebook, FiInstagram, FiLinkedin } from "react-icons/fi";
+import { FiMail, FiPhone, FiTwitter, FiFacebook, FiLinkedin } from "react-icons/fi";
 
 const Footer = () => {
     return (
@@ -9,7 +9,7 @@ const Footer = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="footer py-8 px-10 bg-gradient-to-r from-blue via-sky-500 to-cyan-500 text-white"
+            className="footer py-8 mb-[10px] px-20 bg-gradient-to-r from-blue via-sky-500 to-cyan-500 text-white"
         >
             <div className="container mx-auto ml-10 grid grid-cols-1 md:grid-cols-4 gap-8">
                 <aside>

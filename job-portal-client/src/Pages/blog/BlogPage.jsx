@@ -25,48 +25,41 @@ const BlogPage = () => {
             });
     }, []);
 
-    // Handle input change for search
     const handleInputChange = (event) => {
         setQuery(event.target.value);
-        setCurrentPage(1); // Reset page to 1 when query changes
+        setCurrentPage(1);
     };
 
-    // Function to handle category filter based on skills
     const handleClick = (event) => {
         const value = event.target.value;
         setSelectedCategory(value);
-        setCurrentPage(1); // Reset page to 1 when category changes
+        setCurrentPage(1);
     };
 
-    // Function to calculate index range for pagination
     const calculatePageRange = () => {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         return { startIndex, endIndex };
     };
 
-    // Function to handle next page
     const nextPage = () => {
         if (currentPage < Math.ceil(filteredItems.length / itemsPerPage)) {
             setCurrentPage(currentPage + 1);
         }
     };
 
-    // Function to handle previous page
     const prevPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
     };
 
-    // Filter posts based on selected category (skills) and query
     const filteredItems = posts.filter((post) => {
         const matchesCategory = !selectedCategory || post.skills.some(skill => skill.value.toLowerCase() === selectedCategory.toLowerCase());
         const matchesQuery = !query || post.blogTitle.toLowerCase().includes(query.toLowerCase());
         return matchesCategory && matchesQuery;
     });
 
-    // Get posts to display for the current page
     const { startIndex, endIndex } = calculatePageRange();
     const postsToDisplay = filteredItems.slice(startIndex, endIndex).map((post) => (
         <PostCard key={post.id} data={post} />

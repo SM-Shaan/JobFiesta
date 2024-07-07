@@ -5,12 +5,11 @@ const SignupForm = () => {
   const { loginWithRedirect } = useAuth0();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('applicant'); // Default role
+  const [role, setRole] = useState('applicant');
 
   const handleSignup = async () => {
     await loginWithRedirect({
       screen_hint: 'signup',
-      // This will need to be configured in the Auth0 signup process
       appState: { email, password, user_metadata: { role } },
     });
   };

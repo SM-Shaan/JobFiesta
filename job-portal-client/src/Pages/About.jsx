@@ -4,36 +4,19 @@ import { Link } from 'react-router-dom';
 const About = () => {
   return (
     <motion.div
-
-
       initial={{ x: -1000 }}
       animate={{ x: [900, 0] }}
       transition={{
         duration: "3",
         delay: "1"
-
-
-
       }}
       whileHover={{ scale: 0.9, opacity: 0.2 }}
-
-
-
-
-
-
-
-
       className="my-24 md:px-14 px-4 max-w-screen-2xl mx-auto">
       <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
         <div
-
-
-
           className="lg:w-1/4">
           <h3 className="text-3xl text-[#2563eb] fond-bold lg:w-1/2 mb-3">Learn More</h3>
           <p className="text-base text-tartiary">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus at perferendis a corrupti veniam. Voluptate consectetur provident temporibus ex veritatis. Quis iste totam neque magnam culpa animi atque! Odit, soluta.</p>
-          {/* <button className="bg-blue rounded-full py-2 px-3 text-white font-bold mt-4">About Us</button> */}
           <Link to="/AboutUs" className="bg-blue rounded-full py-4  px-3 text-white font-bold mt-4">
             About Us
           </Link>

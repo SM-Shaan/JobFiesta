@@ -2,19 +2,16 @@ import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 const MyJobs = () => {
-    // const email = "mdalmamunit427@gamil.com";
     const [jobs, setJobs] = useState([]);
     const [searchText, setSearchText] = useState("");
     const [isLoading, setIsLoading] = useState(true);
 
-    // set current page
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 4;
 
     useEffect(() => {
         setIsLoading(true);
         fetch(`http://localhost:3000/myJobs/moom@moon.com`)
-            // fetch('jobs.json')
             .then(res => res.json())
             .then(data => {
                 setJobs(data);
@@ -22,12 +19,10 @@ const MyJobs = () => {
             });
     }, [searchText]);
 
-    // pagination
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentJobs = jobs.slice(indexOfFirstItem, indexOfLastItem);
 
-    // next btn & prev btn
     const nextPage = () => {
         if (indexOfLastItem < jobs.length) {
             setCurrentPage(currentPage + 1);
@@ -50,7 +45,6 @@ const MyJobs = () => {
 
     const handleDelete = (id) => {
         console.log(id);
-        // fetch('jobs.json', {
         fetch(`http://localhost:3000/job/${id}`, {
             method: "DELETE",
         })
@@ -90,9 +84,6 @@ const MyJobs = () => {
                     </div>
                 </div>
             </div>
-
-
-            {/* table  */}
             <section className="py-1 bg-blueGray-50">
                 <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-5">
                     <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -183,7 +174,6 @@ const MyJobs = () => {
                     </div>
                 </div>
 
-                {/* pagination */}
                 <div className="flex justify-center text-black space-x-8 mb-8">
                     {currentPage > 1 && (
                         <button className="hover:underline" onClick={prevPage}>Previous</button>

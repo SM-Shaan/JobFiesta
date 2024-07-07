@@ -63,7 +63,6 @@ const SliderServicePage = () => {
         <div className='h-screen flex item-center justify-center mt-30 mb-40'>
             <section id="services" className="services">
                 <div className="container">
-                    {/* <div className="flex flex-col items-center justify-center h-screen"> */}
                     <div className="section-title text-center mb-4 ">
                         <h2 className='text-3xl  text-blue m-3'>Services</h2>
                         <h3 className="text-xl font-semibold">We do offer awesome <span className="text-blue-600">Services</span></h3>

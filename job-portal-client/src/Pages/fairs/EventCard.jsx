@@ -14,7 +14,6 @@ const EventCard = ({ data }) => {
         createAt
     } = data;
 
-    // Utility function to truncate text
     const truncateText = (text, length) => {
         if (text.length <= length) return text;
         return text.substring(0, length) + "...";
@@ -28,7 +27,6 @@ const EventCard = ({ data }) => {
             >
                 <img
                     src={image}
-                    // alt="Company Logo"
                     className="w-48 h-48 rounded object-cover shadow-md"
                 />
                 <div>

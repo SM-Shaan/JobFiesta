@@ -37,16 +37,13 @@ const Blogform1 = () => {
 
     return (
         <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 mb-20 mt-10">
-            {/* form */}
             <div className="bg-[#FAFAFA] py-10 px-4 lg:px-16">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                    {/* first row */}
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                         <div className="lg:w-1/2 w-full">
                             <label className="block mb-2 text-lg">Blog Title</label>
                             <input
                                 type="text"
-                                // defaultValue={"Web Developer"}
                                 {...register("blogTitle")}
                                 className="create-job-input"
                             />
@@ -55,58 +52,11 @@ const Blogform1 = () => {
                             <label className="block mb-2 text-lg">Author Name</label>
                             <input
                                 type="text"
-                                // placeholder="Ex: Microsoft"
                                 {...register("postedBy")}
                                 className="create-job-input"
                             />
                         </div>
                     </div>
-                    {/* second row */}
-                    {/* <div className="create-job-flex">
-                        <div className="lg:w-1/2 w-full">
-                            <label className="block mb-2 text-lg">Minimum Salary</label>
-                            <input
-                                type="text"
-                                placeholder="$20k"
-                                {...register("minPrice")}
-                                className="create-job-input"
-                            />
-                        </div>
-                        <div className="lg:w-1/2 w-full">
-                            <label className="block mb-2 text-lg">Maximum Salary</label>
-                            <input
-                                type="text"
-                                placeholder="$120k"
-                                {...register("maxPrice")}
-                                className="create-job-input"
-                            />
-                        </div>
-                    </div> */}
-                    {/* third row */}
-                    {/* <div className="create-job-flex">
-                        <div className="lg:w-1/2 w-full">
-                            <label className="block mb-2 text-lg">Blog Tags</label>
-                            <select
-                                {...register("blogtags", { required: true })}
-                                className="create-job-input"
-                            >
-                                <option value="">Choose your salary</option>
-                                <option value="Hourly">Hourly</option>
-                                <option value="Monthly">Monthly</option>
-                                <option value="Yearly">Yearly</option>
-                            </select>
-                        </div>
-                        <div className="lg:w-1/2 w-full">
-                            <label className="block mb-2 text-lg">Job Location</label>
-                            <input
-                                type="text"
-                                placeholder="Ex: New York"
-                                {...register("jobLocation")}
-                                className="create-job-input"
-                            />
-                        </div>
-                    </div> */}
-                    {/* fourth row */}
                     <div className="create-job-flex">
                         <div className="lg:w-1/2 w-full">
                             <label className="block mb-2 text-lg">Posting Date</label>
@@ -126,20 +76,7 @@ const Blogform1 = () => {
                                 className="create-job-input"
                             />
                         </div>
-                        {/* <div className="lg:w-1/2 w-full">
-                            <label className="block mb-2 text-lg">Experience Level</label>
-                            <select
-                                {...register("experienceLevel")}
-                                className="create-job-input"
-                            >
-                                <option value="">Choose your experience</option>
-                                <option value="Hourly">Hourly</option>
-                                <option value="Monthly">Internship</option>
-                                <option value="Yearly">Work remotely</option>
-                            </select>
-                        </div> */}
                     </div>
-                    {/* 5th row */}
                     <div>
                         <label>Required Tags Sets:</label>
                         <CreatableSelect
@@ -150,7 +87,6 @@ const Blogform1 = () => {
                             className="create-job-input py-4"
                         />
                     </div>
-                    {/* 6th row */}
                     <div className="create-job-flex">
                         <div className="lg:w-1/2 w-full">
                             <label className="block mb-2 text-lg">Blog Logo</label>
@@ -161,21 +97,8 @@ const Blogform1 = () => {
                                 className="create-job-input"
                             />
                         </div>
-                        {/* <div className="lg:w-1/2 w-full">
-                            <label className="block mb-2 text-lg">Employment Type</label>
-                            <select
-                                {...register("employmentType")}
-                                className="create-job-input"
-                            >
-                                <option value="">Choose your experience</option>
-                                <option value="Full-time">Full-time</option>
-                                <option value="Part-time">Part-time</option>
-                                <option value="Temporary">Temporary</option>
-                            </select>
-                        </div> */}
                     </div>
 
-                    {/* 7th row */}
                     <div className="w-full">
                         <label className="block mb-2 text-lg">Blog Description</label>
                         <textarea
@@ -188,9 +111,6 @@ const Blogform1 = () => {
                             {...register("description")}
                         />
                     </div>
-                    {/* last row  */}
-
-
                     <input
                         type="submit"
                         className="block mt-12 bg-blue text-white font-semibold px-8 py-2 rounded-rm cursor-pointer"
