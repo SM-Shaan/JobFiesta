@@ -29,7 +29,7 @@ const AboutUs = () => {
             >
                 <div className="bg-white shadow-lg rounded-lg p-4">
                     <img
-                        src="https://lh3.googleusercontent.com/proxy/LsDWL1d2hStk4HjUkaLLeh26s2UQGVekh65yj1c_6QXsjGg6gSg7qU0maZUqJ0aJSF9dPwQP3nvZUvwTMIqrA_COlithf33YqnQ25DwBuOuLuyABuEqEcmYz5nqEZ1Y"
+                        src="https://cairomedicaleg.com/images/our-vision-banner.jpg"
                         alt="Our Vision"
                         className="w-full h-32 object-cover rounded-t-lg mb-4"
                     />

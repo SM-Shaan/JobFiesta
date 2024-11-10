@@ -7,7 +7,7 @@ const servicesItems = [
     // { id: 1, title: "Advices", path: "/advice", des: "seek help", image: "/images/advice.jpg" },
     { id: 2, title: "Blogs", path: "blogs", des: "read more", image: "/images/blog.jpg" },
     { id: 3, title: "Resume", path: "resume", des: "prepare cv", image: "/images/resume.jpg" },
-    { id: 4, title: "Quiz", path: "", des: "knowledge test", image: "/images/trending.jpg" },
+    // { id: 4, title: "Quiz", path: "", des: "knowledge test", image: "/images/trending.jpg" },
 ]
 
 const ServicesCard = () => {

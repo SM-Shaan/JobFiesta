@@ -30,7 +30,7 @@ const Footer = () => {
                             />
                             <circle cx="16.9857" cy="17.4857" r="12.0143" fill="#ffffff" />
                         </svg>
-                        <span className="font-bold">Naukri.com</span>
+                        <span className="font-bold">Chakri.com</span>
                     </a>
                     <p className="mb-4">ACME Industries Ltd.<br />Providing reliable services since 1992</p>
                 </aside>
@@ -66,7 +66,7 @@ const Footer = () => {
                 </nav>
             </div>
             <div className="mt-24 text-center">
-                <p>&copy; 2024 Naukri.com. All rights reserved.</p>
+                <p>&copy; 2024 Chakri.com. All rights reserved.</p>
             </div>
         </motion.footer>
     );

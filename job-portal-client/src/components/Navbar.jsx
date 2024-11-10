@@ -32,7 +32,6 @@ const Navbar = ({ }) => {
     // { path: "/my-job", title: "My Jobs", roles: ["Recruiter",] },
     { path: "/salary", title: "Salary Estimate", roles: ["Applicants"] },
     { path: "/post-job", title: "Post A Job", roles: ["Recruiter", "Admin"] },
-    { path: "/blogform", title: "Blog Form", roles: ["Admin"] },
     { path: "/slider", title: "Services" },
     { path: "/events", title: "Events" },
     // { path: "/dashboard", title: "Admin Dashboard", roles: ["Admin"] },
@@ -48,7 +47,7 @@ const Navbar = ({ }) => {
             <circle cx="12.0143" cy="12.5143" r="12.0143" fill="#3575E2" fillOpacity="0.4" />
             <circle cx="16.9857" cy="17.4857" r="12.0143" fill="#3575E2" />
           </svg>
-          <span className="text-blue">Naukri.com</span>
+          <span className="text-blue">Chakri.com</span>
         </a>
 
         <ul className="hidden md:flex gap-12">

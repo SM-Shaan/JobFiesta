@@ -24,13 +24,14 @@ const DashboardLayout = () => {
         { path: "dashboard", title: "Dashboard", roles: ["Admin"] },
         { path: "Payments", title: "Payments", roles: ["Admin"] },
         { path: "AllUser", title: "All Users", roles: ["Admin"] },
-        { path: "BlogData", title: "BlogData", roles: ["Admin"] },
+        { path: "BlogData", title: "BlogData", roles: ["Admin", "Applicants"] },
         { path: "EventData", title: "EventData", roles: ["Admin"] },
         { path: "Eventform", title: "EventForm", roles: ["Recruiter"] },
         { path: "MyEvents", title: "My Event", roles: ["Recruiter"] },
         { path: "UserPayment", title: "MyPayments", roles: ["Applicants"] },
-        { path: "Content", title: "ContentForm", roles: ["Admin", "Recruiter"] },
+        { path: "Content", title: "ContentForm", roles: ["Admin", "Recruiter", "Applicants"] },
         { path: "my-job", title: "MyJobs", roles: ["Recruiter"] },
+        { path: "/blogform", title: "Blog Form", roles: ["Admin", "Applicants"] },
     ];
     const hasRole = (roles) => roles?.some(role => userRoles.includes(role));
 

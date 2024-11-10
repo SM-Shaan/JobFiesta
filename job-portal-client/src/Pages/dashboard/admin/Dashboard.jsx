@@ -109,15 +109,15 @@ const Dashboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                 <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-bold mb-2">Total Users</h2>
-                    <p className="text-3xl">{userCount}</p>
+                    <p className="text-3xl">12</p>
                 </div>
                 <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-bold mb-2">Total Recruiters</h2>
-                    <p className="text-3xl">300</p>
+                    <p className="text-3xl">3</p>
                 </div>
                 <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-bold mb-2">Total Applicants</h2>
-                    <p className="text-3xl">900</p>
+                    <p className="text-3xl">9</p>
                 </div>
                 <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-bold mb-2">Total Jobs Posted</h2>
